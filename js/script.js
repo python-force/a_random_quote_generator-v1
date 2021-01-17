@@ -71,6 +71,12 @@ let quotes = [
         citation: 'https://www.brainyquote.com/quotes/alexandra_elbakyan_1099052?src=t_database',
         year: 1988
     },
+    {
+        quote: '',
+        source: 'Alexandra Elbakyan',
+        citation: 'https://www.brainyquote.com/quotes/alexandra_elbakyan_1099052?src=t_database',
+        year: 1988
+    },
 ]
 
 /***
@@ -104,6 +110,7 @@ function parseHTML(obj) {
             html += `<span class="year">2016</span></p>`
         } else {
             html = "Your database of quotes includes an empty quote"
+            break;
         }
     }
     return html
