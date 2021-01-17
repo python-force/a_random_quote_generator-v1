@@ -28,6 +28,7 @@ let quotes = [
         quote: '\'YouKu\' means what\'s best and what\'s cool in Chinese. So, the whole product philosophy really revolves around how to help users, from a massive video database, finds what\'s best and what\'s cool.',
         source: 'Victor Koo',
         citation: 'https://www.brainyquote.com/quotes/victor_koo_692801?src=t_database',
+        year: null
     },
     {
         quote: 'In order to protect the market value of a proprietary database, the owner must prohibit redistribution of the contents - otherwise, the information would quickly leak out and be widely known.',
@@ -38,7 +39,7 @@ let quotes = [
     {
         quote: 'Why did Google, for example, recently decide to offer free 411 service? I haven\'t talked to people at Google, but it\'s pretty clear to me why. It\'s because of speech recognition. It has nothing to do with 411 service: it has to do with getting a database of voices, so they don\'t have to license speech technology from Nuance or someone else.',
         source: 'Tim O\'Reilly',
-        citation: 'https://www.brainyquote.com/quotes/tim_oreilly_671263?src=t_database',
+        citation: '',
         year: 1954
     },
     {
@@ -89,6 +90,7 @@ function getRandomNumber(min, max) {
 
 function getRandomQuote(arr) {
     quotePosition = getRandomNumber(0, quotes.length)
+    console.log(quotePosition)
     return quotes[quotePosition]   // The function returns quote integer (index in the array)
 }
 
@@ -97,6 +99,7 @@ function getRandomQuote(arr) {
 ***/
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries
+/*
 function parseHTML(obj) {
     let html = ''
     for (const [key, value] of Object.entries(obj)) {
@@ -112,6 +115,32 @@ function parseHTML(obj) {
             html = "Your database of quotes includes an empty quote"
             break;
         }
+    }
+    return html
+}
+*/
+
+
+function parseHTML(obj) {
+    let html = ''
+    let quoteList = Object.entries(obj);
+    if (quoteList[0][1] !== '') {
+        html += `<p class="quote">${quoteList[0][1]}</p>`
+        if (quoteList[1][1] !== '') {
+            html += `<p class="source">${quoteList[1][1]}`
+            if (quoteList[2][1] !== '') {
+                html  += `<span class="citation">${quoteList[2][1]}</span>`
+            }
+            if (quoteList[3][1] !== null) {
+                html += `<span class="year">${quoteList[3][1]}</span></p>`
+            } else {
+                html += `</p>`
+            }
+        } else {
+            html = "Your database include a quote but missing an author."
+        }
+    } else {
+        html = "Your database of quotes includes an empty quote"
     }
     return html
 }
