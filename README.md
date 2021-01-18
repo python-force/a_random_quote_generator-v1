@@ -3,7 +3,7 @@ App that displays random famous quotes each time a button is clicked. You will s
 
 The objects in the quotes array store the individual properties of the quotes.
 
-quote - string - the actual quote
-source - string - the person or character who said it
-A citation property to at least one quote object. The value should be a string holding a reference to the source of the quote, like the book, movie or song where the quote originates.
-A year property to at least one quote object. The value should be a string or number representing the year the quote originated.
+1. quote - string - the actual quote
+2. source - string - the person or character who said it
+3. A citation property to at least one quote object. The value should be a string holding a reference to the source of the quote, like the book, movie or song where the quote originates.
+4. A year property to at least one quote object. The value should be a string or number representing the year the quote originated.
