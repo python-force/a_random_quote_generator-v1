@@ -81,6 +81,25 @@ let quotes = [
 ]
 
 /***
+ * `getRandomColor` function
+***/
+
+// https://stackoverflow.com/questions/20790579/wont-math-floormath-random-255-generate-uneven-probabilities
+function getRandomRGB() {
+    return Math.floor(Math.random() * 256);
+}
+
+function getRandomColor() {
+    let rgbList = []
+    for (let i=0; i<3; i++) {
+        let color = getRandomRGB()
+        rgbList.push(color)
+    }
+    let cssColor = rgbList.join(', ')
+    return `rgb(${cssColor})`
+}
+
+/***
  * `getRandomQuote` function
 ***/
 
@@ -97,29 +116,6 @@ function getRandomQuote(arr) {
 /***
  * `printQuote` function
 ***/
-
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries
-/*
-function parseHTML(obj) {
-    let html = ''
-    for (const [key, value] of Object.entries(obj)) {
-        if (key === 'quote' && value !== '') {
-            html += `<p class="quote">${value}</p>`
-        } else if (key === 'source' && value !== '') {
-            html += `<p class="source">${value}`
-        } else if (key === 'citation' && value !== '') {
-            html  += `<span class="citation">${value}</span>`
-        } else if (key === 'year' && value !== '') {
-            html += `<span class="year">2016</span></p>`
-        } else {
-            html = "Your database of quotes includes an empty quote"
-            break;
-        }
-    }
-    return html
-}
-*/
-
 
 function parseHTML(obj) {
     let html = ''
@@ -146,8 +142,10 @@ function parseHTML(obj) {
 }
 
 function printQuote() {
-    quote = getRandomQuote(quotes)
-    finalHTML = parseHTML(quote)
+    let color = getRandomColor()
+    let quote = getRandomQuote(quotes)
+    let finalHTML = parseHTML(quote)
+    document.body.style.backgroundColor = color;
     document.getElementById('quote-box').innerHTML = finalHTML;
 }
 
