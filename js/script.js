@@ -141,13 +141,15 @@ function parseHTML(obj) {
     return html
 }
 
-function printQuote() {
+let printQuote = (function printQuote() {
     let color = getRandomColor()
     let quote = getRandomQuote(quotes)
     let finalHTML = parseHTML(quote)
     document.body.style.backgroundColor = color;
     document.getElementById('quote-box').innerHTML = finalHTML;
-}
+})
+
+setInterval(printQuote, 3000);
 
 /***
  * click event listener for the print quote button
